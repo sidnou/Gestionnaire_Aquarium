@@ -7,3 +7,6 @@ __pycache__/*
 *.pyo
 *.pyd
 *.log
+
+!/src/apps/aquariums/migrations/
+!/src/apps/users/migrations/
