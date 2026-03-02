@@ -21,6 +21,7 @@ class Analyse(models.Model):
     mg = models.FloatField(max_length=5)
     fe = models.FloatField(max_length=5)
     cu = models.FloatField(max_length=5)
+    tds = models.IntegerField()
     observation = models.CharField(max_length=100)
 
     def __str__(self):
