@@ -42,14 +42,16 @@ class Traitement(models.Model):
     date_traitement = models.DateField()
 
 class Espece(models.Model):
-    # TODO : Choix durtée de l'eau
+        # Choix de dureté de l'eau
     DURTEE_CHOIX = [
-        ("",""),
-        ("", ""),
-        ("", ""),
-        ("", ""),
-
+            ("TRES_DOUCE", "Très douce (0-4 °dGH)"),
+            ("DOUCE", "Douce (4-8 °dGH)"),
+            ("MOYENNEMENT_DURE", "Moyennement dure (8-12 °dGH)"),
+            ("LEGEREMENT_DURE", "Légèrement dure (12-18 °dGH)"),
+            ("DURE", "Dure (18-25 °dGH)"),
+            ("TRES_DURE", "Très dure (>25 °dGH)"),
     ]
+
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
     nom_espece = models.CharField(max_length=25)
     type_espece = models.CharField(max_length=25)
@@ -58,7 +60,6 @@ class Espece(models.Model):
     paramettre_max_ph = models.FloatField()
     paramettre_eau = models.CharField(max_length=25)
 class Plante(models.Model):
-    # TODO : Choix d'Emplacemnt
     EMPLACEMENT_CHOIX = [
         ("ARRIERE PLAN","Arrière Plan"),
         ("MILIEU PLAN", "Milieu Plan"),
