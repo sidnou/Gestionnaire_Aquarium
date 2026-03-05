@@ -64,7 +64,9 @@ class Plante(models.Model):
         ("ARRIERE PLAN","Arrière Plan"),
         ("MILIEU PLAN", "Milieu Plan"),
         ("PREMIER PLAN", "Premier Plan"),
-        ("SUR OBJET","Sur Objet")
+        ("SUR OBJET","Sur Objet"),
+        ("FLOTANTE","Flottante"),
+        ("N'IMPORTE OU","N'importe où"),
     ]
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
     nom_plante = models.CharField(max_length=25)
@@ -76,3 +78,10 @@ class Plante(models.Model):
 
 
 
+class Equipement(models.Model):
+    aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
+    type_equipement = models.CharField(max_length=100)
+    nom_equipement = models.CharField(max_length=100)
+    date_installation = models.DateField()
+    carateristique = models.TextField(null=True, blank=True)
+    commentaire = models.TextField(null=True, blank=True)    

@@ -1,6 +1,9 @@
 from .base import *
 import os
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-503+j1il(u-)mktxz2oouw3%_odj@dbkzi(-(v%+mfk0upp!n$'
+
 DEBUG = True
 ALLOWED_HOSTS =[]
 

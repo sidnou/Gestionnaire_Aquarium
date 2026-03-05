@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aquarium, Analyse, ChangeEau, Traitement, Espece, Plante
+from .models import Aquarium, Analyse, ChangeEau, Traitement, Espece, Plante,Equipement
 
 
 # Register your models here.
@@ -30,3 +30,7 @@ class EspeceAdmin(admin.ModelAdmin):
 @admin.register(Plante)
 class PlanteAdmin(admin.ModelAdmin):
     list_display = ["aquarium","nom_plante","emplacement_aquarium","paramettre_min_ph","paramettre_max_ph","paramettre_min_co2","paramettre_max_co2"]
+
+@admin.register(Equipement)
+class EquipementAdmin(admin.ModelAdmin):
+    list_display = ["aquarium","nom_equipement","date_installation","commentaire"]
