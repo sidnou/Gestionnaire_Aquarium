@@ -10,3 +10,5 @@ __pycache__/*
 
 !/src/apps/aquariums/migrations/*
 !/src/apps/users/migrations/*
+.vscode/*
+.DS_Store
