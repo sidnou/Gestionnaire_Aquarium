@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ titre }}
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for analyse in liste_analyses %}
+            <tr>
+                <td>{{ analyse.aquarium }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

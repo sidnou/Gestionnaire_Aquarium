@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Aquarium
+from .models import Aquarium, Analyse
 from pathlib import Path
 
 
@@ -26,4 +26,14 @@ def tableau_bord(request):
 
     }
 
-    return render(request, 'aquariums/dashboard.html',context)
+    return render(request, 'aquariums/tableau-bord.html',context)
+
+def analyse(request):
+    context = {
+        "titre": "Analyses d'Aquarium",
+        "version" : APP_VERSION,
+        "liste_analyses" : Analyse.objects.all()
+
+    }
+
+    return render(request,'aquariums/analyses.html',context)
