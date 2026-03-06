@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ titre }}
+    <table>
+        <thead>
+        <tr>
+            <th>Aquarium</th>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Date de traitement</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for traitement in liste_traitements %}
+            <tr>
+                <td>{{ traitement.aquarium }}</td>
+                <td>{{ traitement.nom_produit }}</td>
+                <td>{{ traitement.quantite }}ml</td>
+                <td>{{ traitement.date_traitement }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -5,24 +5,40 @@
     <table>
         <thead>
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+{#            TODO: Ajouter les unites de mesure#}
+            <th>Aquarium</th>
+            <th>NO2(mg/L)</th>
+            <th>NO3</th>
+            <th>NH4</th>
+            <th>pH</th>
+            <th>KH</th>
+            <th>GH</th>
+            <th>SiO2</th>
+            <th>PO4</th>
+            <th>MG</th>
+            <th>Fe</th>
+            <th>CU</th>
+            <th>TDS</th>
+            <th>Observation</th>
         </tr>
         </thead>
         <tbody>
         {% for analyse in liste_analyses %}
             <tr>
                 <td>{{ analyse.aquarium }}</td>
+                <td>{{ analyse.no2 }}</td>
+                <td>{{ analyse.no3 }}</td>
+                <td>{{ analyse.nh4 }}</td>
+                <td>{{ analyse.ph }}</td>
+                <td>{{ analyse.kh }}</td>
+                <td>{{ analyse.gh }}</td>
+                <td>{{ analyse.sio2 }}</td>
+                <td>{{ analyse.po4 }}</td>
+                <td>{{ analyse.mg }}</td>
+                <td>{{ analyse.fe }}</td>
+                <td>{{ analyse.cu }}</td>
+                <td>{{ analyse.tds }}</td>
+                <td>{{ analyse.observation }}</td>
             </tr>
         {% endfor %}
         </tbody>
