@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Aquarium, Analyse, Traitement
+from .models import Aquarium, Analyse, Traitement,Espece,Plante,Equipement
 from pathlib import Path
 
 
@@ -46,3 +46,11 @@ def traitement(request):
     }
 
     return render(request,"aquariums/traitements.html",context)
+def espece(request):
+    context = {
+        "titre":"Espèces",
+        "version": APP_VERSION,
+        "liste_especes": Espece.objects.all()
+    }
+
+    return render(request,"aquariums/especes.html",context)

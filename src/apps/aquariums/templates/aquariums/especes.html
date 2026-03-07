@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ titre }}
+    <table>
+        <thead>
+        <tr>
+            <th>Aquarium</th>
+            <th>Nom de l'Espèce</th>
+            <th>Type d'Espèce</th>
+            <th>Nombre</th>
+            <th>Paramètre Min pH</th>
+            <th>Paramètre Max pH</th>
+            <th>Paramère eau</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for espece in liste_especes %}
+            <tr>
+                <td>{{ espece.aquarium }}</td>
+                <td>{{ espece.nom_espece }}</td>
+                <td>{{ espece.type_espece }}</td>
+                <td>{{ espece.nombre_espece }}</td>
+                <td>{{ espece.paramettre_min_ph }}</td>
+                <td>{{ espece.paramettre_max_ph }}</td>
+                <td>{{ espece.paramettre_eau }}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

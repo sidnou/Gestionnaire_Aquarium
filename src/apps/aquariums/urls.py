@@ -25,5 +25,6 @@ urlpatterns = [
     path("tableau-bord/",views.tableau_bord,name="tableau-bord"),
     path("analyses/",views.analyse,name="analyse"),
     path("traitements/",views.traitement,name="traitement"),
+    path("especes/",views.espece,name="espece")
     
 ]
