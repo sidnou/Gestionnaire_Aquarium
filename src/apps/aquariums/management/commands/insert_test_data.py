@@ -78,6 +78,7 @@ class Command(BaseCommand):
         self.stdout.write('Création des analyses d\'eau...')
         Analyse.objects.create(
             aquarium=aquarium1,
+            date_analyse=date(2025, 4, 5),
             no2=0.1,
             no3=15.0,
             ph=7.2,
@@ -95,6 +96,7 @@ class Command(BaseCommand):
         
         Analyse.objects.create(
             aquarium=aquarium2,
+            date_analyse=date(2025,6,15),
             no2=0.0,
             no3=20.0,
             ph=8.1,
@@ -112,6 +114,7 @@ class Command(BaseCommand):
         
         Analyse.objects.create(
             aquarium=aquarium3,
+            date_analyse=date(2025,7,25),
             no2=0.05,
             no3=10.0,
             ph=6.8,

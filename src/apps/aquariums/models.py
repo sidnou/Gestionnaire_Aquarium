@@ -10,6 +10,7 @@ class Aquarium(models.Model):
         return self.nom
 class Analyse(models.Model):
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
+    date_analyse = models.DateField()
     no2 = models.FloatField(max_length=5)
     no3 = models.FloatField(max_length=5)
     ph = models.FloatField(max_length=5)

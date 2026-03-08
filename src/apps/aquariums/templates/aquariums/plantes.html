@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ titre }}
+    <table>
+        <thead>
+        <tr>
+            <th>Aquarium</th>
+            <th>Nom de la Plante</th>
+            <th>Emplacement</th>
+            <th>Paramètre Min pH</th>
+            <th>Paramètre Max pH</th>
+            <th>Paramètre Min CO2</th>
+            <th>Paramètre Max CO2</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for plante in liste_plantes %}
+            <tr>
+                <td>{{ plante.aquarium }}</td>
+                <td>{{ plante.nom_plante }}</td>
+                <td>{{ plante.emplacement_aquarium }}</td>
+                <td>{{ plante.paramettre_min_ph }}</td>
+                <td>{{ plante.paramettre_max_ph }}</td>
+                <td>{{ plante.paramettre_min_co2 }}</td>
+                <td>{{ plante.paramettre_max_co2 }}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

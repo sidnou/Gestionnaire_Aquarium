@@ -3,5 +3,18 @@
 {% block content %}
     {{ titre }}
 
+    {% for  aquarium in liste_aquariums_detail  %}
+
+        <h2>{{ aquarium.nom }}</h2>
+        <p>Volume d'eau : {{ aquarium.volume_eau }} litres</p>
+        <p>Date de mise en service : {{ aquarium.date_mise_en_service }}</p>
+        <p>Commentaire : {{ aquarium.commentaire }}</p>
+        {{ aquarium_equipements }}
+
+
+    {% endfor %}
+
+
+
 
 {% endblock %}

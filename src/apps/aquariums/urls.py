@@ -22,9 +22,11 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.accueil,name='accueil'),
-    path("tableau-bord/",views.tableau_bord,name="tableau-bord"),
-    path("analyses/",views.analyse,name="analyse"),
-    path("traitements/",views.traitement,name="traitement"),
-    path("especes/",views.espece,name="espece")
+    path("tableau-bord/",views.tableau_bord,name="tableau_bord"),
+    path("analyses/",views.analyse,name="analyses"),
+    path("traitements/",views.traitement,name="traitements"),
+    path("especes/",views.espece,name="especes"),
+    path("plantes/",views.plante,name="plantes"),
+    path("equipements/",views.equipement,name="equipements")
     
 ]

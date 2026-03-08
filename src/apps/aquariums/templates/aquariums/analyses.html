@@ -3,10 +3,12 @@
 {% block content %}
     {{ titre }}
     <table>
+        <caption>Liste des Analyses </caption>
         <thead>
         <tr>
 {#            TODO: Ajouter les unites de mesure#}
             <th>Aquarium</th>
+            <th>Date</th>
             <th>NO2(mg/L)</th>
             <th>NO3</th>
             <th>NH4</th>
@@ -26,6 +28,7 @@
         {% for analyse in liste_analyses %}
             <tr>
                 <td>{{ analyse.aquarium }}</td>
+                <td>{{ analyse.date_analyse }}</td>
                 <td>{{ analyse.no2 }}</td>
                 <td>{{ analyse.no3 }}</td>
                 <td>{{ analyse.nh4 }}</td>
