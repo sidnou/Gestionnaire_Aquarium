@@ -3,18 +3,24 @@
 {% block content %}
     {{ titre }}
 
-    {% for  aquarium in liste_aquariums_detail  %}
+    {% for  aquarium in liste_aquariums_detail %}
 
-        <h2>{{ aquarium.nom }}</h2>
-        <p>Volume d'eau : {{ aquarium.volume_eau }} litres</p>
-        <p>Date de mise en service : {{ aquarium.date_mise_en_service }}</p>
-        <p>Commentaire : {{ aquarium.commentaire }}</p>
-        {{ aquarium_equipements }}
+        <h2>{{ aquarium.aquariums.nom }}</h2>
+        <p>Volume d'eau : {{ aquarium.aquariums.volume_eau }} litres</p>
+        <p>Mise en service : {{ aquarium.aquariums.date_mise_en_service }}</p>
+
+        {% for espece in aquarium.especes %}
+            {{ espece.nom_espece }}
+            {{ espece.nombre_espece }}
+        {% endfor %}
 
 
     {% endfor %}
 
-
-
-
 {% endblock %}
+
+
+
+
+
+

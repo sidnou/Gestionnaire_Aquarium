@@ -21,14 +21,28 @@ def accueil(request):
 
 
 def tableau_bord(request):
+    aquariums = Aquarium.objects.all()
+    aquariums_detail = []
+    for aquarium in aquariums:
+        aquariums_detail.append(
+            {
+                "aquariums": aquarium,
+                "especes": Espece.objects.filter(aquarium=aquarium),
+                "plantes": Plante.objects.filter(aquarium=aquarium),
+            }
+        )
+
     context = {
         "titre": "Tableau de bord",
         "version": APP_VERSION,
-        'liste_aquariums_detail': Aquarium.objects.all(),
-        "aquarium_equipements": Equipement._meta.related_objects
+        'liste_aquariums_detail': aquariums_detail,
+
+
+
+
 
     }
-
+    print(aquariums_detail)
     return render(request, 'aquariums/tableau-bord.html', context)
 
 
