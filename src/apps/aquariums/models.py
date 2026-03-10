@@ -23,6 +23,7 @@ class Analyse(models.Model):
     fe = models.FloatField(max_length=5)
     cu = models.FloatField(max_length=5)
     tds = models.IntegerField()
+    temperature = models.FloatField()
     observation = models.CharField(max_length=100)
 
     def __str__(self):

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{ titre }}
+    <h1>{{ titre }}</h1>
 
     {% for  aquarium in liste_aquariums_detail %}
         <h2>{{ aquarium.aquariums.nom }}</h2>
@@ -25,6 +25,7 @@
             <p>{{ analyse.no2 }}</p>
             <p>{{ analyse.no3 }}</p>
             <p>{{ analyse.gh }}</p>
+            <p>{{ analyse.temperature }}</p>
         {% endfor %}
 
     {% endfor %}
