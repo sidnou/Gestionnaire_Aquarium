@@ -29,6 +29,7 @@ def tableau_bord(request):
                 "aquariums": aquarium,
                 "especes": Espece.objects.filter(aquarium=aquarium),
                 "plantes": Plante.objects.filter(aquarium=aquarium),
+                "analyses":Analyse.objects.filter(aquarium=aquarium), # TODO: Afficher la dernière analyse
             }
         )
 

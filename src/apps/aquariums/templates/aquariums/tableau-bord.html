@@ -4,16 +4,28 @@
     {{ titre }}
 
     {% for  aquarium in liste_aquariums_detail %}
-
         <h2>{{ aquarium.aquariums.nom }}</h2>
         <p>Volume d'eau : {{ aquarium.aquariums.volume_eau }} litres</p>
         <p>Mise en service : {{ aquarium.aquariums.date_mise_en_service }}</p>
-
+        <h3>Espèces</h3>
         {% for espece in aquarium.especes %}
-            {{ espece.nom_espece }}
-            {{ espece.nombre_espece }}
+            <p>{{ espece.nom_espece }}</p>
+            <p>{{ espece.nombre_espece }}</p>
         {% endfor %}
-
+        <h3>Plantes</h3>
+        {%  for plante in aquarium.plantes %}
+            <p>{{ plante.nom_plante }}</p>
+            <p>{{ plante.nombre_plante }}</p>
+            <p>{{ plante.empacement_aquarium }}</p>
+        {%  endfor %}
+        <h3>Analyses de l'eau</h3>
+        {% for analyse in aquarium.analyses %}
+            <p>{{ analyse.date_analyse }}</p>
+            <p>{{ analyse.ph }}</p>
+            <p>{{ analyse.no2 }}</p>
+            <p>{{ analyse.no3 }}</p>
+            <p>{{ analyse.gh }}</p>
+        {% endfor %}
 
     {% endfor %}
 
