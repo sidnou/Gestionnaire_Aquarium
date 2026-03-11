@@ -13,3 +13,10 @@ Objective:
 - Ajoute au minimun 10 enregistrements pour chaque modèle.
 - Assure-toi que les données de test couvrent différents scénarios, y compris des cas normaux et des cas limites (par exemple, des aquariums avec différentes tailles, des analyses avec des résultats variés, etc.).
 - Documente les données de test que tu as ajoutées dans le fichier [insert_test_data.py](../src/apps/aquariums/management/commands/insert_test_data.py) pour faciliter la compréhension de leur utilité et de leur pertinence
+
+
+**Fichier concerné:** 
+- insert_test_data.py
+
+**Contraintes:**
+- Ne pas modifier les autres fichiers 

@@ -1,32 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ titre }}</h1>
+    <h1 xmlns="http://www.w3.org/1999/html">{{ titre }}</h1>
 
     {% for  aquarium in liste_aquariums_detail %}
         <h2>{{ aquarium.aquariums.nom }}</h2>
-        <p>Volume d'eau : {{ aquarium.aquariums.volume_eau }} litres</p>
         <p>Mise en service : {{ aquarium.aquariums.date_mise_en_service }}</p>
+        <p>Volume d'eau : {{ aquarium.aquariums.volume_eau }} litres</p>
         <h3>Espèces</h3>
         {% for espece in aquarium.especes %}
-            <p>{{ espece.nom_espece }}</p>
-            <p>{{ espece.nombre_espece }}</p>
+            <p>{{ espece.nom_espece }} : {{ espece.nombre_espece }}</p>
         {% endfor %}
         <h3>Plantes</h3>
-        {%  for plante in aquarium.plantes %}
+        {% for plante in aquarium.plantes %}
             <p>{{ plante.nom_plante }}</p>
             <p>{{ plante.nombre_plante }}</p>
             <p>{{ plante.empacement_aquarium }}</p>
-        {%  endfor %}
-        <h3>Analyses de l'eau</h3>
-        {% for analyse in aquarium.analyses %}
-            <p>{{ analyse.date_analyse }}</p>
-            <p>{{ analyse.ph }}</p>
-            <p>{{ analyse.no2 }}</p>
-            <p>{{ analyse.no3 }}</p>
-            <p>{{ analyse.gh }}</p>
-            <p>{{ analyse.temperature }}</p>
         {% endfor %}
+        <table>
+            <caption><h3>Analyses de l'eau</h3></caption>
+            <thead>
+            <tr>
+                <th>Date d'Analyse</th>
+                <th>pH</th>
+                <th>No2</th>
+                <th>No3</th>
+                <th>GH</th>
+                <th>Température</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for analyse in aquarium.analyses %}
+                <tr>
+                    <td>{{ analyse.date_analyse }}</td>
+                    <td>{{ analyse.ph }}</td>
+                    <td>{{ analyse.no2 }}</td>
+                    <td>{{ analyse.no3 }}</td>
+                    <td>{{ analyse.gh }}</td>
+                    <td>{{ analyse.temperature }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
     {% endfor %}
 

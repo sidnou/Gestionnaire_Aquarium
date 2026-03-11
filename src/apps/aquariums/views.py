@@ -37,11 +37,6 @@ def tableau_bord(request):
         "titre": "Tableau de bord",
         "version": APP_VERSION,
         'liste_aquariums_detail': aquariums_detail,
-
-
-
-
-
     }
     return render(request, 'aquariums/tableau-bord.html', context)
 
