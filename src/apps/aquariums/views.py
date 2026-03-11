@@ -51,6 +51,14 @@ def analyse(request):
 
     return render(request, 'aquariums/analyses.html', context)
 
+def analyse_detail_aquarium(request,aquarium_id):
+    context = {
+        "titre": "Analyses d'Aquarium",
+        "version": APP_VERSION,
+        "liste_analyses": Analyse.objects.filter(aquarium_id=aquarium_id)
+
+    }
+    return render(request,'aquariums/analyse-detail-aquarium.html',context)
 
 def traitement(request):
     context = {

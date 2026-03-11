@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 xmlns="http://www.w3.org/1999/html">{{ titre }}</h1>
+    <h1>{{ titre }}</h1>
 
     {% for  aquarium in liste_aquariums_detail %}
-        <h2>{{ aquarium.aquariums.nom }}</h2>
+        <h2><a href="{% url 'analyse_detail_aquarium' aquarium.aquariums.id %}">{{ aquarium.aquariums.nom }}</a></h2>
         <p>Mise en service : {{ aquarium.aquariums.date_mise_en_service }}</p>
         <p>Volume d'eau : {{ aquarium.aquariums.volume_eau }} litres</p>
         <h3>Espèces</h3>

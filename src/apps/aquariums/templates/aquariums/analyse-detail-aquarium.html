@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Analyse de l'aquarium </h1>
+    {#  TODO: A continuer    #}
+    {% for analyse in liste_analyses %}
+        {{ analyse.date_analyse }}
+        {{ analyse.no2 }}
+
+    {% endfor %}
+
+{% endblock %}
