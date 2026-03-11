@@ -43,7 +43,6 @@ def tableau_bord(request):
 
 
     }
-    print(aquariums_detail)
     return render(request, 'aquariums/tableau-bord.html', context)
 
 
