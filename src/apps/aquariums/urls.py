@@ -18,16 +18,20 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.accueil,name='accueil'),
-    path("tableau-bord/",views.tableau_bord,name="tableau_bord"),
-    path("analyses/",views.analyse,name="analyses"),
-    path("analyses/<int:aquarium_id>/",views.analyse_detail_aquarium,name="analyse_detail_aquarium"),# TODO: A continuer liste analyse par aquarium
-    path("traitements/",views.traitement,name="traitements"),
-    path("especes/",views.espece,name="especes"),
-    path("plantes/",views.plante,name="plantes"),
-    path("equipements/",views.equipement,name="equipements")
-    
+    path('', views.accueil, name='accueil'),
+    path("tableau-bord/", views.tableau_bord, name="tableau_bord"),
+    path("analyses/", views.analyse, name="analyses"),
+    path("analyses/<int:aquarium_id>/", views.analyse_detail_aquarium, name="analyse_detail_aquarium"),
+    path("analyses/ajout/", views.ajout_analyse, name="ajout_analyse"),
+    path("traitements/", views.traitement, name="traitements"),
+    # path(""),
+    path("especes/", views.espece, name="especes"),
+    path("especes/ajout/", views.ajout_espece, name="ajout_espece"),
+    path("plantes/", views.plante, name="plantes"),
+    path("plantes/ajout/",views.ajout_plante,name="ajout_plante"),
+    path("equipements/", views.equipement, name="equipements"),
+    path("aquariums/ajout/", views.ajout_aquarium, name="ajout_aquarium"),
+
 ]

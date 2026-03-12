@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ titre }}</h1>
+    <form action="#" method="post">
+        {% csrf_token %}
+        {{ formulaire_aquarium }}
+        <button type="submit">Ajouter l'aquarium</button>
+    </form>
+{% endblock %}

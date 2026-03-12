@@ -24,7 +24,7 @@ class Analyse(models.Model):
     cu = models.FloatField(max_length=5)
     tds = models.IntegerField()
     temperature = models.FloatField()
-    observation = models.CharField(max_length=100)
+    observation = models.TextField(max_length=250)
 
     def __str__(self):
         return f"{self.aquarium} {self.no2} "

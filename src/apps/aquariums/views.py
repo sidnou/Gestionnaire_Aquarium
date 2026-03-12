@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement, ChangeEau
+from .forms import AquariumForm,AnalyseForm,EspeceForm,PlanteForm,TraitementForm,EquipementForm,ChangeEauForm
 from pathlib import Path
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # dossier src
 
@@ -106,3 +108,45 @@ def equipement(request):
     }
 
     return render(request, "aquariums/equipements.html", context)
+
+def ajout_aquarium(request):
+    context = {
+        "titre": "Ajout Aquarium",
+        "version": APP_VERSION,
+        "liste_aquariums": Aquarium.objects.all(),
+        "formulaire_aquarium": AquariumForm()
+    }
+
+    return render(request,"aquariums/ajout-aquarium.html",context)
+
+def ajout_analyse(request):
+    context = {
+        "titre": "Ajout Analyse",
+        "version": APP_VERSION,
+        "liste_analyses": Analyse.objects.all(),
+        'formulaire_analyse': AnalyseForm()
+    }
+
+    return render(request,"aquariums/ajout-analyse.html",context)
+
+def ajout_espece(request):
+    context = {
+        "titre": "Ajout Espèce",
+        "version": APP_VERSION,
+        "liste_especes": Espece.objects.all(),
+        'formulaire_espece': EspeceForm()
+    }
+
+    return render(request,"aquariums/ajout-espece.html",context)
+
+def ajout_plante(request):
+    context = {
+        "titre": "Ajout Plante",
+        "version": APP_VERSION,
+        "liste_plantes": Plante.objects.all(),
+        'formulaire_plante': PlanteForm()
+    }
+
+    return render(request,"aquariums/ajout-plante.html",context)
+
+# TODO: continuer les fonction ajout

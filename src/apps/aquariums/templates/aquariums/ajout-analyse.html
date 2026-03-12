@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ titre }}</h1>
+    <form action="#" method="post">
+
+        {% csrf_token %}
+        {{ formulaire_analyse }}
+        <button type="submit">Ajouter l'analyse</button>
+    </form>
+{% endblock %}
