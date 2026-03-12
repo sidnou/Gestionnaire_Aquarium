@@ -1,11 +1,98 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Analyse de l'aquarium </h1>
-    {#  TODO: A continuer    #}
-    {% for analyse in liste_analyses %}
-        {{ analyse.date_analyse }}
-        {{ analyse.no2 }}
+
+
+    {#    Tableau analyses de l'aquarium #}
+    <table>
+        <caption>Liste des Analyses</caption>
+        <thead>
+        <tr>
+
+            <th>Aquarium</th>
+            <th>Date</th>
+            <th>NO2(mg/L)</th>
+            <th>NO3(mg/L)</th>
+            <th>NH4(mg/L)</th>
+            <th>pH</th>
+            <th>KH(°dKH)</th>
+            <th>GH(°dGH)</th>
+            <th>SiO2(mg/L)</th>
+            <th>PO4(mg/L)</th>
+            <th>MG(mg/L)</th>
+            <th>Fe(mg/L)</th>
+            <th>CU(mg/L)</th>
+            <th>TDS(ppm)</th>
+            <th>Température(°C)</th>
+            <th>Observation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for analyse in liste_analyses %}
+            <tr>
+                <td>{{ analyse.aquarium }}</td>
+                <td>{{ analyse.date_analyse }}</td>
+                <td>{{ analyse.no2 }}</td>
+                <td>{{ analyse.no3 }}</td>
+                <td>{{ analyse.nh4 }}</td>
+                <td>{{ analyse.ph }}</td>
+                <td>{{ analyse.kh }}</td>
+                <td>{{ analyse.gh }}</td>
+                <td>{{ analyse.sio2 }}</td>
+                <td>{{ analyse.po4 }}</td>
+                <td>{{ analyse.mg }}</td>
+                <td>{{ analyse.fe }}</td>
+                <td>{{ analyse.cu }}</td>
+                <td>{{ analyse.tds }}</td>
+                <td>{{ analyse.temperature }}</td>
+                <td>{{ analyse.observation }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#    Tableau de Changement d'eau de l'aquarium  #}
+    <h3>Changement d'Eau </h3>
+    {% for changement_eau in liste_changements_eau %}
+        <p>
+            {{ changement_eau.date_change_eau }}
+            {{ changement_eau.quantite_litre }}
+            {{ changement_eau.osmose_pourcentage }} %
+            {{ changement_eau.robinet_pourcentage }} %
+        </p>
+    {% endfor %}
+
+    {#    Tablerau Traitement #}
+    <h3>Traitements</h3>
+    {% for traitement in liste_traitements %}
+        <p>
+            {{ traitement.date_traitement }}
+            {{ traitement.nom_produit }}
+            {{ traitement.quantite }} ml
+        </p>
 
     {% endfor %}
+    {#    Tableau des Espèces de l'aquarium #}
+    <h3>Espèces</h3>
+    {% for espece in liste_especes %}
+        <p>
+            {{ espece.nom_espece }}
+            {{ espece.nombre_espece }}
+        </p>
+    {% endfor %}
+    {#    Tableau des plantes de l'aquarium #}
+    <h3>Plantes</h3>
+    {% for liste_plante in liste_plantes %}
+        <p>
+            {{ liste_plante.nom_plante }}
+            {{ liste_plante.nombre_plante }}
+            {{ liste_plante.emplacement_aquarium }}
+        </p>
+
+    {% endfor %}
+
+
+
+
 
 {% endblock %}

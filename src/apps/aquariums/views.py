@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement
+from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement, ChangeEau
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # dossier src
@@ -55,7 +55,13 @@ def analyse_detail_aquarium(request,aquarium_id):
     context = {
         "titre": "Analyses d'Aquarium",
         "version": APP_VERSION,
-        "liste_analyses": Analyse.objects.filter(aquarium_id=aquarium_id)
+        "liste_analyses": Analyse.objects.filter(aquarium_id=aquarium_id),
+        "liste_changements_eau": ChangeEau.objects.filter(aquarium=aquarium_id),
+        "liste_traitements": Traitement.objects.filter(aquarium=aquarium_id),
+        "liste_especes": Espece.objects.filter(aquarium=aquarium_id),
+        "liste_plantes": Plante.objects.filter(aquarium=aquarium_id),
+        "liste_equipements": Equipement.objects.filter(aquarium=aquarium_id)
+
 
     }
     return render(request,'aquariums/analyse-detail-aquarium.html',context)
