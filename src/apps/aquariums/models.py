@@ -1,30 +1,31 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator
+from datetime import date
 # Create your models here.
 class Aquarium(models.Model):
     nom = models.CharField(max_length=25)
-    volume_eau = models.IntegerField()
+    volume_eau = models.PositiveIntegerField()
     date_mise_en_service = models.DateField()
     commentaire = models.TextField()
     def __str__(self):
         return self.nom
 class Analyse(models.Model):
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
-    date_analyse = models.DateField()
-    no2 = models.FloatField(max_length=5)
-    no3 = models.FloatField(max_length=5)
-    ph = models.FloatField(max_length=5)
-    nh4 = models.FloatField(max_length=5)
-    kh = models.FloatField(max_length=5)
-    gh = models.FloatField(max_length=5)
-    sio2 = models.FloatField(max_length=5)
-    po4 = models.FloatField(max_length=5)
-    mg = models.FloatField(max_length=5)
-    fe = models.FloatField(max_length=5)
-    cu = models.FloatField(max_length=5)
-    tds = models.IntegerField()
-    temperature = models.FloatField()
-    observation = models.TextField(max_length=250)
+    date_analyse = models.DateField(default=date.today)
+    no2 = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    no3 = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    ph = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    nh4 = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    kh = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    gh = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    sio2 = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    po4 = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    mg = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    fe = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    cu = models.FloatField(max_length=5,null=True,blank=True,validators=[MinValueValidator(0)])
+    tds = models.PositiveIntegerField(null=True,blank=True)
+    temperature = models.FloatField(null=True,blank=True,validators=[MinValueValidator(0)])
+    observation = models.TextField(max_length=250,null=True,blank=True)
 
     def __str__(self):
         return f"{self.aquarium} {self.no2} "
@@ -33,14 +34,14 @@ class Analyse(models.Model):
 class ChangeEau(models.Model):
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
     date_change_eau  = models.DateField()
-    quantite_litre = models.IntegerField()
-    osmose_pourcentage = models.IntegerField()
-    robinet_pourcentage = models.IntegerField()
+    quantite_litre = models.PositiveIntegerField()
+    osmose_pourcentage = models.PositiveIntegerField()
+    robinet_pourcentage = models.PositiveIntegerField()
 
 class Traitement(models.Model):
     aquarium = models.ForeignKey(Aquarium,on_delete=models.CASCADE)
     nom_produit = models.CharField(max_length=25)
-    quantite = models.IntegerField( help_text="en ml")
+    quantite = models.PositiveIntegerField( help_text="en ml")
     date_traitement = models.DateField()
 
 class Espece(models.Model):
@@ -86,4 +87,4 @@ class Equipement(models.Model):
     nom_equipement = models.CharField(max_length=100)
     date_installation = models.DateField()
     carateristique = models.TextField(null=True, blank=True)
-    commentaire = models.TextField(null=True, blank=True)    
+    commentaire = models.TextField(null=True, blank=True)

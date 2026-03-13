@@ -148,5 +148,13 @@ def ajout_plante(request):
     }
 
     return render(request,"aquariums/ajout-plante.html",context)
+def ajout_traitement(request):
+    context = {
+        "titre": "Ajout Traitement",
+        "version": APP_VERSION,
+        "liste_traitements": Traitement.objects.all(),
+        "formulaire_traitement": TraitementForm(),
+    }
 
+    return render(request,"aquariums/ajout-traitement.html",context)
 # TODO: continuer les fonction ajout
