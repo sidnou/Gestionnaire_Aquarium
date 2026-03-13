@@ -157,4 +157,14 @@ def ajout_traitement(request):
     }
 
     return render(request,"aquariums/ajout-traitement.html",context)
+
+def ajout_equipement(request):
+    context = {
+        "titre" : "Ajout Équipement",
+        "version": APP_VERSION,
+        "liste_equipement": Equipement.objects.all(),
+        "formulaire_equipement": EquipementForm()
+    }
+
+    return render(request,"aquariums/ajout-equipement.html",context)
 # TODO: continuer les fonction ajout

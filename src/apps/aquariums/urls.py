@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import ajout_equipement
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     path("plantes/", views.plante, name="plantes"),
     path("plantes/ajout/",views.ajout_plante,name="ajout_plante"),
     path("equipements/", views.equipement, name="equipements"),
+    path("equipements/ajout/",views.ajout_equipement,name="ajout_equipement"),
     path("aquariums/ajout/", views.ajout_aquarium, name="ajout_aquarium"),
 
 ]
