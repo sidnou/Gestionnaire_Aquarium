@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ titre }}</h1>
+    <form action="{% url 'ajout_change_eau' %}" method="post">
+        {% csrf_token %}
+        {{ formulaire_change_eau }}
+        <button type="submit">Ajouter le changement d'eau</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ titre }}</h1>
+    <table>
+        <caption><h3>Liste Des Changements d'eaux</h3></caption>
+        <thead>
+        <tr>
+            <th>Aquariums</th>
+            <th>Date</th>
+            <th>Quantité(L)</th>
+            <th>Eau Osmosé (%)</th>
+            <th>Eau Robinet (%)</th>
+        </tr>
+        </thead>
+        {% for change_eau in change_eaux %}
+        <tr>
+            <td>{{ change_eau.aquarium }}</td>
+            <td>{{ change_eau.date_change_eau }}</td>
+            <td>{{ change_eau.quantite_litre }}</td>
+            <td>{{ change_eau.osmose_pourcentage }}</td>
+            <td>{{ change_eau.robinet_pourcentage }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

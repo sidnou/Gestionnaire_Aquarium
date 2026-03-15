@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement, ChangeEau
-from .forms import AquariumForm,AnalyseForm,EspeceForm,PlanteForm,TraitementForm,EquipementForm,ChangeEauForm
+from .forms import AquariumForm, AnalyseForm, EspeceForm, PlanteForm, TraitementForm, EquipementForm, ChangeEauForm
 from pathlib import Path
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # dossier src
 
@@ -31,7 +30,7 @@ def tableau_bord(request):
                 "aquariums": aquarium,
                 "especes": Espece.objects.filter(aquarium=aquarium),
                 "plantes": Plante.objects.filter(aquarium=aquarium),
-                "analyses":Analyse.objects.filter(aquarium=aquarium), # TODO: Afficher la dernière analyse
+                "analyses": Analyse.objects.filter(aquarium=aquarium),  # TODO: Afficher la dernière analyse
             }
         )
 
@@ -53,7 +52,8 @@ def analyse(request):
 
     return render(request, 'aquariums/analyses.html', context)
 
-def analyse_detail_aquarium(request,aquarium_id):
+
+def analyse_detail_aquarium(request, aquarium_id):
     context = {
         "titre": "Analyses d'Aquarium",
         "version": APP_VERSION,
@@ -64,9 +64,9 @@ def analyse_detail_aquarium(request,aquarium_id):
         "liste_plantes": Plante.objects.filter(aquarium=aquarium_id),
         "liste_equipements": Equipement.objects.filter(aquarium=aquarium_id)
 
-
     }
-    return render(request,'aquariums/analyse-detail-aquarium.html',context)
+    return render(request, 'aquariums/analyse-detail-aquarium.html', context)
+
 
 def traitement(request):
     context = {
@@ -109,6 +109,18 @@ def equipement(request):
 
     return render(request, "aquariums/equipements.html", context)
 
+
+def change_eau(request):
+    context = {
+        "titre": "Changement d'Eaux",
+        "version": APP_VERSION,
+        "change_eaux": ChangeEau.objects.all(),
+
+    }
+
+    return render(request, "aquariums/change-d-eaux.html", context)
+
+
 def ajout_aquarium(request):
     context = {
         "titre": "Ajout Aquarium",
@@ -116,8 +128,14 @@ def ajout_aquarium(request):
         "liste_aquariums": Aquarium.objects.all(),
         "formulaire_aquarium": AquariumForm()
     }
+    if request.method == "POST":
+        form = AquariumForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("aquariums")
 
-    return render(request,"aquariums/ajout-aquarium.html",context)
+    return render(request, "aquariums/ajout-aquarium.html", context)
+
 
 def ajout_analyse(request):
     context = {
@@ -126,8 +144,14 @@ def ajout_analyse(request):
         "liste_analyses": Analyse.objects.all(),
         'formulaire_analyse': AnalyseForm()
     }
+    if request.method == "POST":
+        form = AnalyseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("analyses")
 
-    return render(request,"aquariums/ajout-analyse.html",context)
+    return render(request, "aquariums/ajout-analyse.html", context)
+
 
 def ajout_espece(request):
     context = {
@@ -136,8 +160,14 @@ def ajout_espece(request):
         "liste_especes": Espece.objects.all(),
         'formulaire_espece': EspeceForm()
     }
+    if request.method == "POST":
+        form = EspeceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("especes")
 
-    return render(request,"aquariums/ajout-espece.html",context)
+    return render(request, "aquariums/ajout-espece.html", context)
+
 
 def ajout_plante(request):
     context = {
@@ -147,7 +177,15 @@ def ajout_plante(request):
         'formulaire_plante': PlanteForm()
     }
 
-    return render(request,"aquariums/ajout-plante.html",context)
+    if request.method == "POST":
+        form = PlanteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("plantes")
+
+    return render(request, "aquariums/ajout-plante.html", context)
+
+
 def ajout_traitement(request):
     context = {
         "titre": "Ajout Traitement",
@@ -155,16 +193,46 @@ def ajout_traitement(request):
         "liste_traitements": Traitement.objects.all(),
         "formulaire_traitement": TraitementForm(),
     }
+    if request.method == "POST":
+        form = TraitementForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("traitements")
 
-    return render(request,"aquariums/ajout-traitement.html",context)
+    return render(request, "aquariums/ajout-traitement.html", context)
+
 
 def ajout_equipement(request):
     context = {
-        "titre" : "Ajout Équipement",
+        "titre": "Ajout Équipement",
         "version": APP_VERSION,
         "liste_equipement": Equipement.objects.all(),
         "formulaire_equipement": EquipementForm()
     }
 
-    return render(request,"aquariums/ajout-equipement.html",context)
-# TODO: continuer les fonction ajout
+    if request.method == "POST":
+        form = EquipementForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("equipements")
+
+    return render(request, "aquariums/ajout-equipement.html", context)
+
+
+def ajout_change_eau(request):
+    context = {
+        "titre": "Ajout Changement d'eau",
+        "version": APP_VERSION,
+        "liste_change_eaux": ChangeEau.objects.all(),
+        "formulaire_change_eau": ChangeEauForm(),
+    }
+
+    if request.method == "POST":
+        form = ChangeEauForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("change_eaux")
+
+    return render(request, 'aquariums/ajout-change-eau.html',context)
+
+# TODO: A vérifier tous les vue "ajout" ==> Créer un fichier test pour test tous les vues
