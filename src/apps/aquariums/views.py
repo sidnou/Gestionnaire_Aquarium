@@ -235,4 +235,4 @@ def ajout_change_eau(request):
 
     return render(request, 'aquariums/ajout-change-eau.html',context)
 
-# TODO: A vérifier tous les vue "ajout" ==> Créer un fichier test pour test tous les vues
+# TODO: Créer un fichier test pour test tous les vues
