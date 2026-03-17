@@ -11,3 +11,9 @@ sudo apt install motion
 curl -Ls https://astral.sh/uv/install.sh | sh
 
 
+mikdir srv_surveillance
+cd srv_surveillance
+uv venv
+uv pip install -r ../requirements.txt
+
+
