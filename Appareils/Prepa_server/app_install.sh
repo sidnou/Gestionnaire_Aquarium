@@ -7,13 +7,15 @@ sudo apt update && sudo apt dist-upgrade -y
 sudo apt install python3-pip
 sudo apt install v4l-utils fswebcam
 sudo apt install motion
+sudo apt install glances # Optionnel , pour surveiller les ressources du système
 #installation UV
 curl -Ls https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
 
-
-mikdir srv_surveillance
+mkdir srv_surveillance
 cd srv_surveillance
 uv venv
-uv pip install -r ../requirements.txt
+source venv/bin/activate
+#uv pip install -r ../requirements.txt
 
 
