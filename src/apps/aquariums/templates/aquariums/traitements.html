@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>{{ titre }}</h1>
+    <button type="submit"><a href="{% url 'ajout_traitement' %}">Ajouter</a></button>
     <table>
         <thead>
         <tr>

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   <h1>{{ titre }}</h1>
+    <h1>{{ titre }}</h1>
+    <button type="submit"><a href="{% url 'ajout_analyse' %}">Ajouter</a></button>
     <table>
         <caption>Liste des Analyses</caption>
         <thead>
         <tr>
-
             <th>Aquarium</th>
             <th>Date</th>
             <th>NO2(mg/L)</th>
