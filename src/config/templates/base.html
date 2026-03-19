@@ -1,19 +1,21 @@
+{% load tailwind_tags %}
 <!doctype html>
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% tailwind_css %}
     <title>{{ titre }}</title>
 </head>
 
 <body>
-    {% include 'aquariums/menus.html' %}
-    {% block content %} {% endblock %}
+{% include 'aquariums/menus.html' %}
+{% block content %} {% endblock %}
 
-    <footer>
-        <p>Gestionnaire Aquariums  v{{ version }}</p>
-    </footer>
+<footer class="text-xs">
+    <p>Gestionnaire Aquariums v{{ version }}</p>
+</footer>
 </body>
 
 </html>
