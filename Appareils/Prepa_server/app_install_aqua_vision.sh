@@ -15,7 +15,7 @@ export PATH="$HOME/.local/bin:$PATH"
 mkdir srv_surveillance
 cd srv_surveillance
 uv venv
-source venv/bin/activate
+source .venv/bin/activate
 #uv pip install -r ../requirements.txt
 
-
+#uv pip install opencv-python ultralytics  # A Testé, mais pas nécessaire pour le moment
