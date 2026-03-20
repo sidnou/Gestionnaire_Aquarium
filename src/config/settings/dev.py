@@ -7,6 +7,11 @@ SECRET_KEY = 'django-insecure-503+j1il(u-)mktxz2oouw3%_odj@dbkzi(-(v%+mfk0upp!n$
 DEBUG = True
 ALLOWED_HOSTS =[]
 
+INSTALLED_APPS += ["django_browser_reload"]
+
+MIDDLEWARE += [
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+]
 # Base de données SQLite pour dev rapide
 DATABASES = {
     "default": {

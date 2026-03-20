@@ -11,11 +11,15 @@
 
 <body>
 {% include 'aquariums/menus.html' %}
-{% block content %} {% endblock %}
+<div>
+    {% block content %} {% endblock %}
+</div>
+<div class="flex justify-center-safe h-48 mt-4 bg-indigo-500">
 
-<footer class="text-xs">
-    <p>Gestionnaire Aquariums v{{ version }}</p>
-</footer>
+    <footer class="flex flex-col items-center justify-center text-center">
+        <p class="text-xs italic">Gestionnaire Aquariums v{{ version }}</p>
+    </footer>
+</div>
 </body>
 
 </html>
