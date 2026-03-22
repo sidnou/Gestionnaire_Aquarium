@@ -9,16 +9,20 @@
     <title>{{ titre }}</title>
 </head>
 
-<body>
-{% include 'aquariums/menus.html' %}
-<div>
+<body class="flex flex-col full bg-indigo-900 text-white">
+<div class="flex-1">
+    {% include 'aquariums/menus.html' %}
+</div>
+<div class="flex-4 p-4">
     {% block content %} {% endblock %}
 </div>
-<div class="flex justify-center-safe h-48 mt-4 bg-indigo-500">
+<div class="flex-auto">
 
-    <footer class="flex flex-col items-center justify-center text-center">
-        <p class="text-xs italic">Gestionnaire Aquariums v{{ version }}</p>
-    </footer>
+    <div class="flex justify-center-safe h-48 mt-4 bg-indigo-500">
+        <footer class="flex flex-col items-center justify-center text-center">
+            <small class="text-xs italic">Gestionnaire Aquariums v{{ version }}</small>
+        </footer>
+    </div>
 </div>
 </body>
 
