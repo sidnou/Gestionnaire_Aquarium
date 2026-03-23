@@ -8,7 +8,9 @@ __pycache__/*
 *.pyd
 *.log
 
-!/src/apps/aquariums/migrations/*
-!/src/apps/users/migrations/*
+src/apps/aquariums/migrations/*
+src/apps/users/migrations/*
 .vscode/*
 .DS_Store
+
+

@@ -53,6 +53,7 @@ def analyse(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "liste_analyses": Analyse.objects.all(),
+        "url_tag_name": 'ajout_analyse',
 
 
     }
@@ -82,6 +83,7 @@ def traitement(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "liste_traitements": Traitement.objects.all(),
+        "url_tag_name": 'ajout_traitement',
     }
 
     return render(request, "aquariums/traitements.html", context)
@@ -92,7 +94,8 @@ def espece(request):
         "titre": "Les Espèces",
         "version": APP_VERSION,
         "annee": ANNEE,
-        "liste_especes": Espece.objects.all()
+        "liste_especes": Espece.objects.all(),
+        "url_tag_name": 'ajout_espece'
     }
 
     return render(request, "aquariums/especes.html", context)
@@ -104,6 +107,7 @@ def plante(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "liste_plantes": Plante.objects.all(),
+        "url_tag_name": 'ajout_plante'
 
     }
 
@@ -116,6 +120,7 @@ def equipement(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "liste_equipements": Equipement.objects.all(),
+        "url_tag_name": 'ajout_equipement',
 
     }
 
@@ -128,6 +133,7 @@ def change_eau(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "change_eaux": ChangeEau.objects.all(),
+        "url_tag_name": 'ajout_change_eau',
 
     }
 
