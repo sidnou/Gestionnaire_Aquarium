@@ -1,12 +1,52 @@
 <nav>
-    <ul>
-        <li><a href="{% url 'tableau_bord' %}">Tableau de bord</a></li>
-        <li><a href="{% url 'accueil' %}">Aquariums</a></li>
-        <li><a href="{% url 'analyses' %}">Analyses</a></li>
-        <li><a href="{% url 'traitements' %}">Traitements</a></li>
-        <li><a href="{% url 'especes' %}">Especes</a></li>
-        <li><a href="{% url 'plantes' %}">Plantes</a></li>
-        <li><a href="{% url 'equipements' %}">Équipements</a></li>
-        <li><a href="{% url 'change_eaux' %}">Changements d'Eaux</a></li>
+    <ul class="flex flex-col gap-2">
+        <li>
+            <a href="{% url 'tableau_bord' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Tableau de bord
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'accueil' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Aquariums
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'analyses' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Analyses
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'traitements' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Traitements
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'especes' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Espèces
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'plantes' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Plantes
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'equipements' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Équipements
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'change_eaux' %}"
+               class="block px-3 py-2 rounded-lg text-green-100 font-semibold hover:bg-green-700 hover:text-green-300 transition-colors">
+                Changements d'eaux
+            </a>
+        </li>
     </ul>
 </nav>

@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement, ChangeEau
 from .forms import AquariumForm, AnalyseForm, EspeceForm, PlanteForm, TraitementForm, EquipementForm, ChangeEauForm
 from pathlib import Path
+from datetime import date
+
+ANNEE = str(date.today().year)
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # dossier src
 
@@ -14,6 +17,7 @@ def accueil(request):
     context = {
         "titre": "Bienvenue sur le gestionnaire d'aquarium",
         "version": APP_VERSION,
+        "annee" : ANNEE,
         "liste_aquariums": Aquarium.objects.all()
 
     }
@@ -37,6 +41,7 @@ def tableau_bord(request):
     context = {
         "titre": "Tableau de bord",
         "version": APP_VERSION,
+        "annee": ANNEE,
         'liste_aquariums_detail': aquariums_detail,
     }
     return render(request, 'aquariums/tableau-bord.html', context)
@@ -46,6 +51,7 @@ def analyse(request):
     context = {
         "titre": "Analyses d'Aquarium",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_analyses": Analyse.objects.all()
 
     }
@@ -57,6 +63,7 @@ def analyse_detail_aquarium(request, aquarium_id):
     context = {
         "titre": "Analyses d'Aquarium",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_analyses": Analyse.objects.filter(aquarium_id=aquarium_id),
         "liste_changements_eau": ChangeEau.objects.filter(aquarium=aquarium_id),
         "liste_traitements": Traitement.objects.filter(aquarium=aquarium_id),
@@ -72,6 +79,7 @@ def traitement(request):
     context = {
         "titre": "Traitement",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_traitements": Traitement.objects.all(),
     }
 
@@ -82,6 +90,7 @@ def espece(request):
     context = {
         "titre": "Les Espèces",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_especes": Espece.objects.all()
     }
 
@@ -92,6 +101,7 @@ def plante(request):
     context = {
         "titre": "Les Plantes",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_plantes": Plante.objects.all(),
 
     }
@@ -103,6 +113,7 @@ def equipement(request):
     context = {
         "titre": "Equipements",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_equipements": Equipement.objects.all(),
 
     }
@@ -114,6 +125,7 @@ def change_eau(request):
     context = {
         "titre": "Changement d'Eaux",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "change_eaux": ChangeEau.objects.all(),
 
     }
@@ -125,6 +137,7 @@ def ajout_aquarium(request):
     context = {
         "titre": "Ajout Aquarium",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_aquariums": Aquarium.objects.all(),
         "formulaire_aquarium": AquariumForm()
     }
@@ -141,6 +154,7 @@ def ajout_analyse(request):
     context = {
         "titre": "Ajout Analyse",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_analyses": Analyse.objects.all(),
         'formulaire_analyse': AnalyseForm()
     }
@@ -157,6 +171,7 @@ def ajout_espece(request):
     context = {
         "titre": "Ajout Espèce",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_especes": Espece.objects.all(),
         'formulaire_espece': EspeceForm()
     }
@@ -173,6 +188,7 @@ def ajout_plante(request):
     context = {
         "titre": "Ajout Plante",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_plantes": Plante.objects.all(),
         'formulaire_plante': PlanteForm()
     }
@@ -190,6 +206,7 @@ def ajout_traitement(request):
     context = {
         "titre": "Ajout Traitement",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_traitements": Traitement.objects.all(),
         "formulaire_traitement": TraitementForm(),
     }
@@ -206,6 +223,7 @@ def ajout_equipement(request):
     context = {
         "titre": "Ajout Équipement",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_equipement": Equipement.objects.all(),
         "formulaire_equipement": EquipementForm()
     }
@@ -223,6 +241,7 @@ def ajout_change_eau(request):
     context = {
         "titre": "Ajout Changement d'eau",
         "version": APP_VERSION,
+        "annee": ANNEE,
         "liste_change_eaux": ChangeEau.objects.all(),
         "formulaire_change_eau": ChangeEauForm(),
     }
