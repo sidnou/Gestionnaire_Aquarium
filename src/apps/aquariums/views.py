@@ -52,7 +52,8 @@ def analyse(request):
         "titre": "Analyses d'Aquarium",
         "version": APP_VERSION,
         "annee": ANNEE,
-        "liste_analyses": Analyse.objects.all()
+        "liste_analyses": Analyse.objects.all(),
+
 
     }
 
@@ -156,7 +157,8 @@ def ajout_analyse(request):
         "version": APP_VERSION,
         "annee": ANNEE,
         "liste_analyses": Analyse.objects.all(),
-        'formulaire_analyse': AnalyseForm()
+        'formulaire_analyse': AnalyseForm(),
+        "url_name": 'ajout_analyse',
     }
     if request.method == "POST":
         form = AnalyseForm(request.POST)

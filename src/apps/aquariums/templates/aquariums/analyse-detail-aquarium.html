@@ -3,10 +3,11 @@
     <h1>Analyse de l'aquarium </h1>
 
     {#    Tableau analyses de l'aquarium #}
-    <table>
+
+    <table class="w-full text-sm">
         <caption>Liste des Analyses</caption>
         <thead>
-        <tr>
+        <tr class="bg-green-800 text-green-100">
 
             <th>Aquarium</th>
             <th>Date</th>
@@ -28,23 +29,23 @@
         </thead>
         <tbody>
         {% for analyse in liste_analyses %}
-            <tr>
-                <td>{{ analyse.aquarium }}</td>
-                <td>{{ analyse.date_analyse }}</td>
-                <td>{{ analyse.no2 }}</td>
-                <td>{{ analyse.no3 }}</td>
-                <td>{{ analyse.nh4 }}</td>
-                <td>{{ analyse.ph }}</td>
-                <td>{{ analyse.kh }}</td>
-                <td>{{ analyse.gh }}</td>
-                <td>{{ analyse.sio2 }}</td>
-                <td>{{ analyse.po4 }}</td>
-                <td>{{ analyse.mg }}</td>
-                <td>{{ analyse.fe }}</td>
-                <td>{{ analyse.cu }}</td>
-                <td>{{ analyse.tds }}</td>
-                <td>{{ analyse.temperature }}</td>
-                <td>{{ analyse.observation }}</td>
+            <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
+                <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ analyse.aquarium }}</td>
+                <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ analyse.date_analyse }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no2 }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no3 }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.nh4 }}</td>
+                <td class="px-3 py-2 text-center font-semibold text-stone-800">{{ analyse.ph }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.kh }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.gh }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.sio2 }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.po4 }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.mg }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.fe }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.cu }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.tds }}</td>
+                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.temperature }}</td>
+                <td class="px-3 py-2 text-stone-500 italic max-w-xs truncate">{{ analyse.observation }}</td>
             </tr>
         {% endfor %}
         </tbody>

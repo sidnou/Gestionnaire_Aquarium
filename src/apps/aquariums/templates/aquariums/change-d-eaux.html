@@ -1,27 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ titre }}</h1>
-    <button type="submit"><a href="{% url 'ajout_change_eau' %}">Ajouter</a></button>
-    <table>
-        <caption><h3>Liste Des Changements d'eaux</h3></caption>
-        <thead>
-        <tr>
-            <th>Aquariums</th>
-            <th>Date</th>
-            <th>Quantité(L)</th>
-            <th>Eau Osmosé (%)</th>
-            <th>Eau Robinet (%)</th>
-        </tr>
-        </thead>
-        {% for change_eau in change_eaux %}
-        <tr>
-            <td>{{ change_eau.aquarium }}</td>
-            <td>{{ change_eau.date_change_eau }}</td>
-            <td>{{ change_eau.quantite_litre }}</td>
-            <td>{{ change_eau.osmose_pourcentage }}%</td>
-            <td>{{ change_eau.robinet_pourcentage }}%</td>
+    {#    En Tête du contenue de la page #}
+    {% include 'aquariums/entete-contenue.html' %}
+    <div class="bg-stone-100 border border-stone-300 rounded-xl overflow-hidden mb-8">
+        <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
+            <h2 class="text-base font-semibold text-green-800">Liste Des Changements d'eaux</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                <tr class="bg-green-800 text-green-100">
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Aquarium
+                    </th>
+                    <th class="px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Date
+                    </th>
+                    <th class="px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Quantité(L)
+                    </th>
+                    <th class="px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Eau Osmosé (%)
+                    </th>
+                    <th class="px-3 py-2.5 text-center text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Eau Robinet (%)
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for change_eau in change_eaux %}
+                    <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
+                        <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ change_eau.aquarium }}</td>
+                        <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ change_eau.date_change_eau }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ change_eau.quantite_litre }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ change_eau.osmose_pourcentage }}%</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ change_eau.robinet_pourcentage }}%</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="16" class="px-4 py-6 text-center text-stone-400 italic">
+                            Aucune analyse enregistrée
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400">
+            {{ liste_analyses|length }} résultat(s)
+        </div>
 
-        </tr>
-        {% endfor %}
-    </table>
+    </div>
 {% endblock %}
