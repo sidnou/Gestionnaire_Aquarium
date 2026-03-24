@@ -3,33 +3,51 @@
 {% block content %}
     {#    En Tête du contenue de la page #}
     {% include 'aquariums/entete-contenue.html' %}
-{# TODO: Améliorer le designe #}
-    <table>
-        <thead>
-        <tr>
-            <th>Aquarium</th>
-            <th>Nom de la Plante</th>
-            <th>Emplacement</th>
-            <th>Paramètre Min pH</th>
-            <th>Paramètre Max pH</th>
-            <th>Paramètre Min CO2</th>
-            <th>Paramètre Max CO2</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for plante in liste_plantes %}
-            <tr>
-                <td>{{ plante.aquarium }}</td>
-                <td>{{ plante.nom_plante }}</td>
-                <td>{{ plante.emplacement_aquarium }}</td>
-                <td>{{ plante.paramettre_min_ph }}</td>
-                <td>{{ plante.paramettre_max_ph }}</td>
-                <td>{{ plante.paramettre_min_co2 }}</td>
-                <td>{{ plante.paramettre_max_co2 }}</td>
-            </tr>
+    <div class="bg-stone-100 border border-stone-300 rounded-xl overflow-hidden mb-8">
+        <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
+            <h2 class="text-base font-semibold text-green-800">Liste Des Equipements</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                <tr class="bg-green-800 text-green-100 ">
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Aquarium
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Nom de la Plante
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Emplacement
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Min pH
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Max pH
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Min CO2
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Max CO2
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for plante in liste_plantes %}
+                    <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
+                        <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ plante.aquarium }}</td>
+                        <td>{{ plante.nom_plante }}</td>
+                        <td>{{ plante.emplacement_aquarium }}</td>
+                        <td>{{ plante.paramettre_min_ph }}</td>
+                        <td>{{ plante.paramettre_max_ph }}</td>
+                        <td>{{ plante.paramettre_min_co2 }}</td>
+                        <td>{{ plante.paramettre_max_co2 }}</td>
+                    </tr>
 
-        {% endfor %}
+                {% endfor %}
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
 {% endblock %}

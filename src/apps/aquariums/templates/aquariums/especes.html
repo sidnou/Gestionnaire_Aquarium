@@ -1,35 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-{#    En Tête du contenue de la page #}
- {% include 'aquariums/entete-contenue.html' %}
-{# TODO: Améliorer le designe #}
-    <table>
-        <thead>
-        <tr>
-            <th>Aquarium</th>
-            <th>Nom de l'Espèce</th>
-            <th>Type d'Espèce</th>
-            <th>Nombre</th>
-            <th>Paramètre Min pH</th>
-            <th>Paramètre Max pH</th>
-            <th>Paramère eau</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for espece in liste_especes %}
-            <tr>
-                <td>{{ espece.aquarium }}</td>
-                <td>{{ espece.nom_espece }}</td>
-                <td>{{ espece.type_espece }}</td>
-                <td>{{ espece.nombre_espece }}</td>
-                <td>{{ espece.paramettre_min_ph }}</td>
-                <td>{{ espece.paramettre_max_ph }}</td>
-                <td>{{ espece.paramettre_eau }}</td>
-            </tr>
+    {#    En Tête du contenue de la page #}
+    {% include 'aquariums/entete-contenue.html' %}
 
-        {% endfor %}
+    <div class="bg-stone-100 border border-stone-300 rounded-xl overflow-hidden mb-8">
+        <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
+            <h2 class="text-base font-semibold text-green-800">Liste Des Espèces</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                <tr class="bg-green-800 text-green-100 ">
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Aquarium
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs  font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Nom de l'Espèce
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Type d'Espèce
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Nombre
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Min pH
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramètre Max pH
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Paramère eau
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for espece in liste_especes %}
+                    <tr>
+                        <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ espece.aquarium }}</td>
+                        <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ espece.nom_espece }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.type_espece }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.nombre_espece }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_min_ph }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_max_ph }}</td>
+                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_eau }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="16" class="px-4 py-6 text-center text-stone-400 italic">
+                            Aucune analyse enregistrée
+                        </td>
+                    </tr>
+                {% endfor %}
 
-        </tbody>
-    </table>
-
+                </tbody>
+            </table>
+        </div>
+        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400">
+            {{ liste_especes|length }} résultat(s)
+        </div>
+    </div>
 {% endblock %}
