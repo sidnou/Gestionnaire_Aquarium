@@ -1,25 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
     {% include 'aquariums/entete-contenue.html' %}
-{# TODO: Améliorer le designe #}
-    <table>
-        <thead>
-        <tr>
-            <th>Aquarium</th>
-            <th>Produit</th>
-            <th>Quantité</th>
-            <th>Date de traitement</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for traitement in liste_traitements %}
-            <tr>
-                <td>{{ traitement.aquarium }}</td>
-                <td>{{ traitement.nom_produit }}</td>
-                <td>{{ traitement.quantite }}ml</td>
-                <td>{{ traitement.date_traitement }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="bg-stone-100 border border-stone-300 rounded-xl overflow-hidden mb-8">
+        <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
+            <h2 class="text-base font-semibold text-green-800">Liste Des Equipements</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                <tr class="bg-green-800 text-green-100 ">
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Aquarium
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Produit
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Quantité
+                    </th>
+                    <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                        Date de traitement
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for traitement in liste_traitements %}
+                    <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
+                        <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ traitement.aquarium }}</td>
+                        <td class="px-3 py-2 text-stone-600 whitespace-nowrap">{{ traitement.nom_produit }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ traitement.quantite }}ml</td>
+                        <td class="px-3 py-2 text-stone-700">{{ traitement.date_traitement }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="16" class="px-4 py-6 text-center text-stone-400 italic">
+                            Aucun équipement enregistré
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400 text-center">
+            {{ liste_traitements|length }} résultat(s)
+        </div>
+    </div>
 {% endblock %}

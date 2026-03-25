@@ -38,16 +38,27 @@
                 {% for plante in liste_plantes %}
                     <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
                         <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ plante.aquarium }}</td>
-                        <td>{{ plante.nom_plante }}</td>
-                        <td>{{ plante.emplacement_aquarium }}</td>
-                        <td>{{ plante.paramettre_min_ph }}</td>
-                        <td>{{ plante.paramettre_max_ph }}</td>
-                        <td>{{ plante.paramettre_min_co2 }}</td>
-                        <td>{{ plante.paramettre_max_co2 }}</td>
+                        <td class="px-3 py-2 text-stone-600 whitespace-nowrap">{{ plante.nom_plante }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ plante.emplacement_aquarium }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ plante.paramettre_min_ph }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ plante.paramettre_max_ph }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ plante.paramettre_min_co2 }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ plante.paramettre_max_co2 }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="16" class="px-4 py-6 text-center text-stone-400 italic">
+                            Aucun équipement enregistré
+                        </td>
                     </tr>
 
                 {% endfor %}
 
                 </tbody>
             </table>
+            <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400 text-center">
+                {{ liste_plantes|length }} résultat(s)
+            </div>
+        </div>
+    </div>
 {% endblock %}

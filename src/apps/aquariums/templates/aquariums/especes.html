@@ -36,14 +36,14 @@
                 </thead>
                 <tbody>
                 {% for espece in liste_especes %}
-                    <tr>
+                    <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
                         <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ espece.aquarium }}</td>
-                        <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ espece.nom_espece }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.type_espece }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.nombre_espece }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_min_ph }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_max_ph }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ espece.paramettre_eau }}</td>
+                        <td class="px-3 py-2 text-stone-600 whitespace-nowrap">{{ espece.nom_espece }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ espece.type_espece }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ espece.nombre_espece }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ espece.paramettre_min_ph }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ espece.paramettre_max_ph }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ espece.paramettre_eau }}</td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -56,7 +56,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400">
+        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400 text-center">
             {{ liste_especes|length }} résultat(s)
         </div>
     </div>

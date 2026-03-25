@@ -18,7 +18,9 @@ def accueil(request):
         "titre": "Bienvenue sur le gestionnaire d'aquarium",
         "version": APP_VERSION,
         "annee" : ANNEE,
-        "liste_aquariums": Aquarium.objects.all()
+        "liste_aquariums": Aquarium.objects.all(),
+        "url_tag_name": 'ajout_aquarium',
+
 
     }
 

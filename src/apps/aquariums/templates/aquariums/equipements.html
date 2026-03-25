@@ -35,11 +35,11 @@
                 {% for equipement in liste_equipements %}
                     <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
                         <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ equipement.aquarium }}</td>
-                        <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ equipement.nom_equipement }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ equipement.type_equipement }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ equipement.date_installation }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ equipement.carateristique }}</td>
-                        <td class="px-3 py-2 text-center text-stone-700">{{ equipement.commentaire }}</td>
+                        <td class="px-3 py-2 text-stone-600 whitespace-nowrap">{{ equipement.nom_equipement }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ equipement.type_equipement }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ equipement.date_installation }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ equipement.carateristique }}</td>
+                        <td class="px-3 py-2 text-stone-700">{{ equipement.commentaire }}</td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -52,7 +52,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400">
+        <div class="px-5 py-2.5 border-t border-stone-300 text-xs text-stone-400 text-center">
             {{ liste_equipements|length }} résultat(s)
         </div>
     </div>
