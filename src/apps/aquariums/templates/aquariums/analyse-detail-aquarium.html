@@ -3,96 +3,178 @@
     <h1>Analyse de l'aquarium </h1>
 
     {#    Tableau analyses de l'aquarium #}
+    <div>
 
-    <table class="w-full text-sm">
-        <caption>Liste des Analyses</caption>
-        <thead>
-        <tr class="bg-green-800 text-green-100">
+        <h3 class="text-base font-semibold text-green-800">Liste des Analyses</h3>
 
-            <th>Aquarium</th>
-            <th>Date</th>
-            <th>NO2(mg/L)</th>
-            <th>NO3(mg/L)</th>
-            <th>NH4(mg/L)</th>
-            <th>pH</th>
-            <th>KH(°dKH)</th>
-            <th>GH(°dGH)</th>
-            <th>SiO2(mg/L)</th>
-            <th>PO4(mg/L)</th>
-            <th>MG(mg/L)</th>
-            <th>Fe(mg/L)</th>
-            <th>CU(mg/L)</th>
-            <th>TDS(ppm)</th>
-            <th>Température(°C)</th>
-            <th>Observation</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for analyse in liste_analyses %}
-            <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
-                <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ analyse.aquarium }}</td>
-                <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ analyse.date_analyse }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no2 }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no3 }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.nh4 }}</td>
-                <td class="px-3 py-2 text-center font-semibold text-stone-800">{{ analyse.ph }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.kh }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.gh }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.sio2 }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.po4 }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.mg }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.fe }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.cu }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.tds }}</td>
-                <td class="px-3 py-2 text-center text-stone-700">{{ analyse.temperature }}</td>
-                <td class="px-3 py-2 text-stone-500 italic max-w-xs truncate">{{ analyse.observation }}</td>
+
+        <table class="w-full text-sm">
+            <thead>
+            <tr class="bg-green-800 text-green-100">
+
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    Aquarium
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    Date
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    NO2(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    NO3(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    NH4(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    pH
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    KH(°dKH)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    GH(°dGH)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    SiO2(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    PO4(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    MG(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    Fe(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    CU(mg/L)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    TDS(ppm)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    Température(°C)
+                </th>
+                <th class="px-3 py-2.5 text-left text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
+                    Observation
+                </th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for analyse in liste_analyses %}
+                <tr class="{% cycle 'bg-white' 'bg-green-50' %} border-b border-stone-200 hover:bg-green-100 transition-colors">
+                    <td class="px-3 py-2 font-semibold text-green-800 whitespace-nowrap">{{ analyse.aquarium }}</td>
+                    <td class="px-3 py-2 text-center text-stone-600 whitespace-nowrap">{{ analyse.date_analyse }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no2 }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.no3 }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.nh4 }}</td>
+                    <td class="px-3 py-2 text-center font-semibold text-stone-800">{{ analyse.ph }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.kh }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.gh }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.sio2 }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.po4 }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.mg }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.fe }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.cu }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.tds }}</td>
+                    <td class="px-3 py-2 text-center text-stone-700">{{ analyse.temperature }}</td>
+                    <td class="px-3 py-2 text-stone-500 italic max-w-xs truncate">{{ analyse.observation }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
 
-    {#    Tableau de Changement d'eau de l'aquarium  #}
-    <h3>Changement d'Eau </h3>
-    {% for changement_eau in liste_changements_eau %}
-        <p>
-            {{ changement_eau.date_change_eau }}
-            {{ changement_eau.quantite_litre }}
-            {{ changement_eau.osmose_pourcentage }} %
-            {{ changement_eau.robinet_pourcentage }} %
-        </p>
-    {% endfor %}
+        {#    Tableau de Changement d'eau de l'aquarium  #}
+        <div class="">
 
-    {#    Tablerau Traitement #}
-    <h3>Traitements</h3>
-    {% for traitement in liste_traitements %}
-        <p>
-            {{ traitement.date_traitement }}
-            {{ traitement.nom_produit }}
-            {{ traitement.quantite }} ml
-        </p>
+            <div class="flex justify-between items-center px-5 py-3 border-b border-stone-300">
+                <h3 class="text-base font-semibold text-green-800">Changement d'Eau</h3>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Date Change D'Eau</th>
+                    <th>Volume</th>
+                    <th>Osmosé (%)</th>
+                    <th>Robinet (%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for changement_eau in liste_changements_eau %}
+                    <tr>
 
-    {% endfor %}
-    {#    Tableau des Espèces de l'aquarium #}
-    <h3>Espèces</h3>
-    {% for espece in liste_especes %}
-        <p>
-            {{ espece.nom_espece }}
-            {{ espece.nombre_espece }}
-        </p>
-    {% endfor %}
-    {#    Tableau des plantes de l'aquarium #}
-    <h3>Plantes</h3>
-    {% for liste_plante in liste_plantes %}
-        <p>
-            {{ liste_plante.nom_plante }}
-            {{ liste_plante.nombre_plante }}
-            {{ liste_plante.emplacement_aquarium }}
-        </p>
+                        <td>
+                            {{ changement_eau.date_change_eau }}
+                        </td>
+                        <td>{{ changement_eau.quantite_litre }}</td>
+                        <td>{{ changement_eau.osmose_pourcentage }} %</td>
+                        <td>{{ changement_eau.robinet_pourcentage }} %</td>
 
-    {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
+        {#    Tablerau Traitement #}
+        <div>
 
+            <h3>Traitements</h3>
+            <table class="">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Produit</th>
+                    <th>Quantité (ml)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for traitement in liste_traitements %}
+                    <tr>
+                        <td>{{ traitement.date_traitement }}</td>
+                        <td>{{ traitement.nom_produit }}</td>
+                        <td>{{ traitement.quantite }} ml</td>
+                    </tr>
+                {% endfor %}
 
+                </tbody>
 
+                {% for traitement in liste_traitements %}
+                    <p>
+                        {{ traitement.date_traitement }}
+                        {{ traitement.nom_produit }}
+                        {{ traitement.quantite }} ml
+                    </p>
 
+                {% endfor %}
+            </table>
+        </div>
+        {#    Tableau des Espèces de l'aquarium #}
+        <div>
+
+            <h3>Espèces</h3>
+            {% for espece in liste_especes %}
+                <p>
+                    {{ espece.nom_espece }}
+                    {{ espece.nombre_espece }}
+                </p>
+            {% endfor %}
+        </div>
+        {#    Tableau des plantes de l'aquarium #}
+        <div>
+            <h3>Plantes</h3>
+            {% for liste_plante in liste_plantes %}
+                <p>
+                    {{ liste_plante.nom_plante }}
+                    {{ liste_plante.nombre_plante }}
+                    {{ liste_plante.emplacement_aquarium }}
+                </p>
+
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

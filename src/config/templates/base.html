@@ -1,6 +1,6 @@
-{% load tailwind_tags %}
 <!doctype html>
 <html lang="fr">
+{% load tailwind_tags %}
 
 <head>
     <meta charset="UTF-8"/>
@@ -13,29 +13,34 @@
 
 <div class="flex flex-row flex-1">
     {# Barre latérale #}
-    <div class="bg-green-900 sticky top-0 h-screen flex flex-col text-green-100">
-        <div class="m-4 flex flex-col h-full">
-            <div class="text-2xl font-bold mb-4 text-center text-green-300">Gestionnaire <br>Aquariums</div>
-            <div class="">
-                {% include 'aquariums/menus.html' %}
-            </div>
-            <div class="mt-auto p-3 bg-green-800/50 text-green-400 rounded-xl">
-                <small class="text-sm italic">Version {{ version }}</small>
+    <div id="sidebar">
+        <div class="bg-green-900 sticky top-0 h-screen flex flex-col text-green-100">
+            <div class="m-4 flex flex-col h-full">
+                <div id="sidebar-title" class="text-2xl font-bold mb-4 text-center text-green-300">Gestionnaire <br>Aquariums
+                </div>
+
+
+                <div class="" id="sidebar-menu">
+                    {% include 'aquariums/menus.html' %}
+                </div>
+                <div id="sidebar-version" class="mt-auto p-3 bg-green-800/50  rounded-xl">
+                    <small class="text-xs italic text-green-400">Version {{ version }}</small>
+                </div>
             </div>
         </div>
     </div>
 
     {# Contenu principal #}
-    <div class="m-4 flex-1 text-stone-800">
+    <div class="m-4 flex-1 text-stone-800 ">
         {% block content %} {% endblock %}
     </div>
 </div>
 
 {# Pied de page #}
-<footer class="bg-green-800 text-green-200 text-white p-4 w-full mt-auto">
+<footer class="bg-green-800 text-green-200 text-white p-4 mt-auto">
     <div class="container mx-auto text-center">
         {# contenu footer #}
-            &copy; {{ annee }} Gestionnaire d'Aquariums. Tous droits réservés.
+        &copy; {{ annee }} Gestionnaire d'Aquariums. Tous droits réservés.
     </div>
 </footer>
 
