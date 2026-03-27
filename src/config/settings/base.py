@@ -33,9 +33,13 @@ INSTALLED_APPS = [
     # 'apps.capteurs',
     # 'apps.aquariums',
     # 'apps.users',
-    'src.apps.capteurs.apps.CapteursConfig',
-    'src.apps.aquariums.apps.AquariumsConfig',
-    'src.apps.users.apps.UsersConfig',
+    # 'src.capteurs.apps.CapteursConfig',
+    # 'src.aquariums.apps.AquariumsConfig',
+    # 'src.users.apps.UsersConfig',
+    'aquariums',
+    'capteurs',
+    'users',
+
 ]
 
 MIDDLEWARE = [

@@ -3,7 +3,7 @@ from .models import Aquarium, Analyse, Traitement, Espece, Plante, Equipement, C
 from .forms import AquariumForm, AnalyseForm, EspeceForm, PlanteForm, TraitementForm, EquipementForm, ChangeEauForm
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # dossier src
+BASE_DIR = Path(__file__).resolve().parent.parent.parent # dossier src
 
 APP_VERSION = (BASE_DIR / "VERSION").read_text().strip()
 
@@ -233,6 +233,6 @@ def ajout_change_eau(request):
             form.save()
             return redirect("change_eaux")
 
-    return render(request, 'aquariums/ajout-change-eau.html',context)
+    return render(request, 'aquariums/ajout-change-eau.html', context)
 
 # TODO: Créer un fichier test pour test tous les vues

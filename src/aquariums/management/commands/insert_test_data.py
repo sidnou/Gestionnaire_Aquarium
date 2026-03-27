@@ -26,7 +26,7 @@ Usage:
 
 from django.core.management.base import BaseCommand
 from datetime import date
-from apps.aquariums.models import Aquarium, Analyse, ChangeEau, Traitement, Espece, Plante, Equipement
+from aquariums.models import Aquarium, Analyse, ChangeEau, Traitement, Espece, Plante, Equipement
 
 
 class Command(BaseCommand):
