@@ -11,3 +11,4 @@ class Appareil(models.Model):
     adresse_ip = models.GenericIPAddressField(null=True,blank=True)
     date_ajout = models.DateField(null=True,blank=True)
     active = models.BooleanField(default=True)
+    fichier_conf = models.FileField()
