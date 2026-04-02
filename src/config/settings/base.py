@@ -32,15 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'apps.capteurs',
-    # 'apps.aquariums',
-    # 'apps.users',
-    # 'src.capteurs.apps.CapteursConfig',
-    # 'src.aquariums.apps.AquariumsConfig',
-    # 'src.users.apps.UsersConfig',
     'aquariums',
     'capteurs',
     'users',
+    'appareils',
 
 ]
 

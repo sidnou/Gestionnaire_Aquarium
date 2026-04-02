@@ -11,4 +11,9 @@ class Appareil(models.Model):
     adresse_ip = models.GenericIPAddressField(null=True,blank=True)
     date_ajout = models.DateField(null=True,blank=True)
     active = models.BooleanField(default=True)
-    fichier_conf = models.FileField()
+
+
+class ConfigurationAppareil(models.Model):
+    appareil = models.ForeignKey(Appareil,on_delete=models.CASCADE)
+    version_configuration = models.CharField(max_length=20)
+    fichier_configuration = models.FileField(upload_to='confg_appareil/')
