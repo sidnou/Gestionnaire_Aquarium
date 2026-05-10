@@ -1,10 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
-   <h1 class="text-2xl font-bold text-green-800 mb-6">{{ titre }}</h1>
-    <form action="#" method="post">
+    <div class="max-w-5xl mx-auto py-2">
+        <h1 class="text-2xl font-bold text-green-800 mb-1">{{ titre }}</h1>
+        <p class="text-sm text-stone-500 mb-1">Renseignez les mesures de l'aquarium puis enregistrez l'analyse.</p>
+        <p class="text-xs text-stone-400 mb-6">Les champs marqués d'un * sont obligatoires.</p>
 
-        {% csrf_token %}
-        {{ formulaire_analyse }}
-        <button type="submit">Ajouter l'analyse</button>
-    </form>
+        <div class="flex justify-center">
+            <form id="analyse-form" class="w-full max-w-4xl border border-stone-300 rounded-2xl p-4 md:p-6 bg-stone-50 shadow-sm"
+                  action="{% url url_name %}" method="post">
+                {% csrf_token %}
+
+                {% if formulaire_analyse.non_field_errors %}
+                    <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-700">
+                        {{ formulaire_analyse.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {% for champ in formulaire_analyse %}
+                        <div class="space-y-1.5 {% if champ.name == 'observation' %}md:col-span-2{% endif %}">
+                            <label for="{{ champ.id_for_label }}" class="text-sm font-semibold text-stone-700">
+                                {{ champ.label }}{% if champ.field.required %}<span class="text-red-600"> *</span>{% endif %}
+                            </label>
+                            {{ champ }}
+                            {% if champ.help_text %}
+                                <p class="text-xs text-stone-500">{{ champ.help_text }}</p>
+                            {% endif %}
+                            {% for erreur in champ.errors %}
+                                <p class="text-xs text-red-600 font-medium">{{ erreur }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-stone-200 flex flex-col sm:flex-row gap-2 sm:justify-end">
+                    <a href="{% url 'analyses' %}"
+                       class="text-center border border-stone-300 text-stone-600 hover:bg-stone-200 font-semibold rounded-lg py-2 px-4 text-sm transition-colors">
+                        Annuler
+                    </a>
+                    <button type="submit"
+                            class="bg-green-800 hover:bg-green-700 text-green-50 font-semibold rounded-lg py-2 px-4 text-sm transition-colors">
+                        Ajouter l'analyse
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Applique un style homogène aux widgets Django sans modifier les forms Python.
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('analyse-form');
+            if (!form) return;
+
+            const baseInputClasses = [
+                'w-full', 'rounded-lg', 'border', 'border-stone-300', 'bg-white', 'px-3', 'py-2',
+                'text-sm', 'text-stone-700', 'focus:outline-none', 'focus:ring-2', 'focus:ring-green-200',
+                'focus:border-green-700'
+            ];
+
+            form.querySelectorAll('input, select, textarea').forEach((field) => {
+                const type = (field.getAttribute('type') || '').toLowerCase();
+
+                if (type === 'checkbox' || type === 'radio') {
+                    field.classList.add('h-4', 'w-4', 'rounded', 'border-stone-300', 'text-green-800', 'focus:ring-green-200');
+                    return;
+                }
+
+                field.classList.add(...baseInputClasses);
+
+                if (field.tagName.toLowerCase() === 'textarea') {
+                    field.classList.add('min-h-24');
+                }
+            });
+        });
+    </script>
 {% endblock %}
