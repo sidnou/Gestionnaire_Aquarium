@@ -1,0 +1,31 @@
+#!/bin/bash
+# Ce stripte est déstiné à être utilisé dans le cadre de la préparation d'une VM 
+# Auteur : Jacques-a sidney
+# version : 1.0
+# Systeme d'exploitation : Linux Ubuntu 
+# Base de données : PostgreSQL
+# Date : 18/05/2026 
+
+# le script doit être exécuté avec les privilèges d'administrateur (root)
+if [ "$EUID" -ne 0 ]; then
+    echo "Veuillez exécuter ce script en tant que root."
+    exit 1
+fi
+
+# Mise à jour du système
+echo "Mise à jour du système..."
+apt update && apt upgrade -y 
+# Installation de PostgreSQL
+echo "Installation de PostgreSQL..."
+apt install postgresql postgresql-contrib -y
+# Démarrage du service PostgreSQL
+echo "Démarrage du service PostgreSQL..."
+if [systemctl start postgresql]; then
+    echo "PostgreSQL démarré avec succès."
+    systemctl enable postgresql
+else
+    echo "Échec du démarrage de PostgreSQL."
+    exit 1
+fi  
+# Configuration de PostgreSQL pour permettre les connexions à distance 
+
